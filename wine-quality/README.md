@@ -12,20 +12,21 @@ It's possible a non-linear model could provide some improvement due to interacti
 Bucketing the numerical ratings into a few classes (eg, Low; Avg; High) should yield good accuracy and is probably more realistic. The 100 pt scale that most wines are rated on has always seemed ludicracy to me, but I'm no [Supertaster](https://en.wikipedia.org/wiki/Supertaster). No code submitted for this yet.
 
 ## Octave example
+### Setup
 ```
 >> run setup-data.m
-
->> # Solve with normal equation method.
+```
+### Solve with normal equation (aka closed-form) method.
+```
 >> theta = normalEqn(XTraining, yTraining);
 >> rSquared(XTest, yTest, theta)
 ans =  0.43233
-
->> # Solve with gradient descent.
+```
+### Alternatively, solve with iterative batch gradient descent.
+```
 >> [theta, J_History] = gradientDescent(XTraining, yTraining, theta, .0003, 250);
 
->> figure;
->> ylabel('Cost J');
->> xlabel('Number of iterations');
+>> figure; ylabel('Cost J'); xlabel('Number of iterations');
 >> plot(1:numel(J_History), J_History, '-b', 'LineWidth', 2);
 ```
 ![image](https://cloud.githubusercontent.com/assets/311298/16923027/0efcab1a-4ccd-11e6-86a8-dd2310ff29ee.png)
