@@ -1,3 +1,4 @@
+## rSquared(X, y, theta)
 ## Measure the R-squared value of our prediction.
 ## https://en.wikipedia.org/wiki/Coefficient_of_determination
 function R = rSquared(X, y, theta)

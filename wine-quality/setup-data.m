@@ -11,8 +11,8 @@ n = size(data, 2);
 theta = zeros(n,1);
 
 mTotal = length(data);
-## Use 90% of our data for training; 10% for validation.
-trainingRatio = .9;
+## Split the data into training and testing sets. Simple for now.
+trainingRatio = .93;
 
 #### Setup training data ####
 ## Size of training set.
@@ -31,3 +31,5 @@ indices = setdiff(1:mTotal, indices);
 [XTest, yTest] = dataToXy(data(indices, :));
 
 
+## Safe guess on alpha (learning rate)
+alpha = 1 / (max(max(xTraining)) * max(yTraining));
