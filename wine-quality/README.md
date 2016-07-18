@@ -1,7 +1,7 @@
 ## Linear Regression
-Using a simple linear regression model (solving for theta with `normalEqn`), we're able to predict better than "guessing". Which is to say, the model does better than guessing the mean() value.
+Using a simple linear regression model (solving for theta with `normalEqn`), we're able to predict better than "guessing". Which is to say, the model does better than guessing the mean() value. One unknown for me is that normalEqn() (aka the "closed form") solution for theta offers significantly better results than gradientDescent. I need to noodle on that more.
 
-The R Squared isn't great, but given the labels are subjective human grades, at least there's some improvement over random.
+The R Squared isn't great (~.33 for some samples), but given the labels are subjective human grades, at least there's some improvement over random.
 
 Funny enough, eyeballing the data, it looks like alcohol is the best predictor of a high score. Some analysis could be added to confirm that.
 
@@ -15,9 +15,17 @@ Bucketing the numerical ratings into a few classes (eg, Low; Avg; High) should y
 ```
 >> run setup-data.m
 
+>> # Solve with normal equation method.
 >> theta = normalEqn(XTraining, yTraining);
-
 >> rSquared(XTest, yTest, theta)
 ans =  0.43233
 
+>> # Solve with gradient descent.
+>> [theta, J_History] = gradientDescent(XTraining, yTraining, theta, .0003, 250);
+
+>> figure;
+>> ylabel('Cost J');
+>> xlabel('Number of iterations');
+>> plot(1:numel(J_History), J_History, '-b', 'LineWidth', 2);
 ```
+![image](https://cloud.githubusercontent.com/assets/311298/16923027/0efcab1a-4ccd-11e6-86a8-dd2310ff29ee.png)
