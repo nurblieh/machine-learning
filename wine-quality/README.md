@@ -11,7 +11,7 @@ It's possible a non-linear model could provide some improvement due to interacti
 ## Multi-Classification
 Bucketing the numerical ratings into a few classes (eg, Low; Avg; High) should yield good accuracy and is probably more realistic. The 100 pt scale that most wines are rated on has always seemed ludicracy to me, but I'm no [Supertaster](https://en.wikipedia.org/wiki/Supertaster). No code submitted for this yet.
 
-Octave example,
+## Octave example
 ```
 >> run setup-data.m
 
