@@ -1,7 +1,7 @@
 ## Linear Regression
 Using a simple linear regression model (solving for theta with `normalEqn`), we're able to predict better than "guessing". Which is to say, the model does better than guessing the mean() value. One unknown for me is that normalEqn() (aka the "closed form") solution for theta offers significantly better results than gradientDescent. I need to noodle on that more.
 
-The R Squared isn't great (~.33 for some samples), but given the labels are subjective human grades, at least there's some improvement over random.
+The R Squared isn't great (~.43 for the sample below), but given the labels are subjective human grades, at least there's some improvement over random.
 
 Funny enough, eyeballing the data, it looks like alcohol is the best predictor of a high score. Some analysis could be added to confirm that.
 
