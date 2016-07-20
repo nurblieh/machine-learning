@@ -5,10 +5,10 @@ The R Squared isn't great (~.43 for the sample below), but given the labels are 
 
 Funny enough, eyeballing the data, it looks like alcohol is the best predictor of a high score. Some analysis could be added to confirm that.
 
-## Non-linear 
-It's possible a non-linear model could provide some improvement due to interaction between features. Rather than generating a polynomial mapping of the features, I'll cook up a small neural network implementation for the practice and see if that helps.
+## Neural Network / Non-linear
+Using a neural network, it's possible to get  better results than with the above linear method. This could mean there are feature-feature interactions which the simple linear model can't represent. 
 
-**Update** I wrote `costFunctionNN.m` and trained a 3-layer neural network. After hundreds of iterations it can outperform the closed form solution (`normalEqn`). I haven't attempted to tweak any of the knobs yet (eg, lambda, hidden layer dimensions). More on those results later.
+Initial tests used a 3-layer (1 hidden layer) neural network with the # of units being 12-6-1, respectively. Lambda in the [0.5, 1.0] range seemed to work well. Code and configs in `costFunctionNN.m` and `runNN.m`. Example run at the bottom of this page.
 
 ## Multi-Classification
 Bucketing the numerical ratings into a few classes (eg, Low; Avg; High) should yield good accuracy and is probably more realistic. The 100 pt scale that most wines are rated on has always seemed ludicracy to me, but I'm no [Supertaster](https://en.wikipedia.org/wiki/Supertaster). No code submitted for this yet.
@@ -32,3 +32,13 @@ ans =  0.43233
 >> plot(1:numel(J_History), J_History, '-b', 'LineWidth', 2);
 ```
 ![image](https://cloud.githubusercontent.com/assets/311298/16923027/0efcab1a-4ccd-11e6-86a8-dd2310ff29ee.png)
+
+### Neural Network attempt
+```
+>> run runNN.m
+Running neural network for 100 iterations...
+Cost (training set): 0.2177
+Cost (test set): 0.1616
+R-Squared (training set): 0.3342
+R-Squared (test set): 0.4786
+```
