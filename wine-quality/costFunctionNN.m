@@ -39,10 +39,7 @@ function [J grad] = costFunctionNN(nn_params, ...
   ## Cost func for logistic/classification
   ## J = sum(sum(-y' .* log(a3) - (1-y') .* log(1-a3))) / m;
 
-  ## printf("size(y): %d\n", size(y));
-  ## printf("size(a3): %d\n", size(a3));
-  J = (1/(2*m)) * sum((a3 - y') .^ 2)
-  ## printf("size(J): %d\n", size(J));
+  J = (1/(2*m)) * sum((a3 - y') .^ 2);
 
   ## Back prop stuff.
   delta_3 = a3 - y';            # 1x1500 - 1x1500 = 1x1500;
@@ -53,9 +50,7 @@ function [J grad] = costFunctionNN(nn_params, ...
   delta_2 = delta_2(2:end,:);          # 6x1500
 
   Theta1_grad = (delta_2 * X) / m;   # 6x1500 * 1500x13 = 6x13
-  ## printf("size(Theta1_grad): %d\n", size(Theta1_grad));
   Theta2_grad = (delta_3 * a2') / m; # 1x1500 * 1500x7 = 1x7
-  ## printf("size(Theta2_grad): %d\n", size(Theta2_grad));
 
   ## Regularization
   ## Square each element of Theta1 and Theta2 and sum all elements together.
