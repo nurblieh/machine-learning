@@ -30,9 +30,9 @@ mTest = mTotal - mTraining;
 indices = setdiff(1:mTotal, indices);
 [XTest, yTest] = dataToXy(data(indices, :));
 
-
 ## Safe guess on alpha (learning rate)
 alpha = 1 / (max(max(XTraining)) * max(yTraining));
+
 
 ## Setup neural network parameters, if this method preferred.
 input_layer_size  = 12;  # 12 wine attributes.
@@ -42,9 +42,7 @@ output_layer_size = 1;   # Regression mode.
 initial_Theta1 = randInitWeights(input_layer_size, hidden_layer_size);
 initial_Theta2 = randInitWeights(hidden_layer_size, output_layer_size);
 
-# Unroll parameters
-initial_nn_params = [initial_Theta1(:) ; initial_Theta2(:)];
+options = optimset('MaxIter', 500);
 
-options = optimset('MaxIter', 50);
 ## Regularization weight.
 lambda = 1;
