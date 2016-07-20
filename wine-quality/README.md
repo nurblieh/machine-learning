@@ -8,6 +8,8 @@ Funny enough, eyeballing the data, it looks like alcohol is the best predictor o
 ## Non-linear 
 It's possible a non-linear model could provide some improvement due to interaction between features. Rather than generating a polynomial mapping of the features, I'll cook up a small neural network implementation for the practice and see if that helps.
 
+**Update** I wrote `costFunctionNN.m` and trained a 3-layer neural network. After hundreds of iterations it can outperform the closed form solution (`normalEqn`). I haven't attempted to tweak any of the knobs yet (eg, lambda, hidden layer dimensions). More on those results later.
+
 ## Multi-Classification
 Bucketing the numerical ratings into a few classes (eg, Low; Avg; High) should yield good accuracy and is probably more realistic. The 100 pt scale that most wines are rated on has always seemed ludicracy to me, but I'm no [Supertaster](https://en.wikipedia.org/wiki/Supertaster). No code submitted for this yet.
 
